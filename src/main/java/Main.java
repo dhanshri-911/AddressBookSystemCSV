@@ -45,6 +45,7 @@ public class Main {static Scanner scanner = new Scanner(System.in);
         AddressBookMain addressBookMain = new AddressBookMain();
         addressBookMain.readPeopleFromFile();
         main.addMultipleAddressBook();
+        addressBookMain.jsonReader();
 
     }
 

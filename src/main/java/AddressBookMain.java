@@ -1,16 +1,33 @@
 import com.opencsv.CSVReader;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import java.io.*;
+import java.text.ParseException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class AddressBookMain {
     static Scanner scanner = new Scanner(System.in);
     LinkedList<Contacts> person = new LinkedList<>();
-    File file = new File("AddressBook.csv");
+    File file = new File("AddressBook.json");
+
     //File file = new File("AddressBook.csv");
     //File file = new File("AddressBook.csv");
 
+
+    void jsonReader(){
+        try {
+            Object obj = new JSONParser().parse(new FileReader(file));
+            JSONObject jo = (JSONObject) obj;
+        }catch (NullPointerException | FileNotFoundException ne){
+            System.out.println(ne);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (org.json.simple.parser.ParseException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void addPerson() throws IOException {
         System.out.println("Enter the First Name");
